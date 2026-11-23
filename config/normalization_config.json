@@ -1,0 +1,53 @@
+{
+    "method": "wrist_relative_and_scale_normalization",
+    "landmarks": {
+        "count": 21,
+        "coordinates": [
+            "x",
+            "y",
+            "z"
+        ],
+        "input_shape": [
+            21,
+            3
+        ]
+    },
+    "coordinate_adjustment": {
+        "x": "x * image_width",
+        "y": "y * image_height",
+        "z": "z * image_width"
+    },
+    "position_normalization": {
+        "reference_landmark": 0,
+        "operation": "subtract_wrist_coordinates"
+    },
+    "scale_normalization": {
+        "reference_landmarks": [
+            0,
+            9
+        ],
+        "distance": "euclidean_2d_xy",
+        "operation": "divide_all_xyz_by_scale",
+        "scale_unit": "image_coordinate_scale"
+    },
+    "processing": {
+        "input_dtype": "float64",
+        "output_dtype": "float32",
+        "clipping": false,
+        "augmentation": false
+    },
+    "mediapipe": {
+        "version": "1.2.3",
+        "model_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+        "running_mode_training": "IMAGE",
+        "num_hands": 1,
+        "min_hand_detection_confidence": 0.5,
+        "min_hand_presence_confidence": 0.5,
+        "min_tracking_confidence": 0.5
+    },
+    "dataset": {
+        "valid_samples": 1424,
+        "num_classes": 24,
+        "split_fingerprint": "d3edf2a2809155b0f5a558ee073b9f755a8f38af9d7f7cd370f9e234685e2f82"
+    }
+}
